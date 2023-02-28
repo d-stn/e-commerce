@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 notes.md
+**/style.css.map
+**/style.css

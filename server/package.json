@@ -1,0 +1,24 @@
+{
+    "name": "ecommerce-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=production node index.js",
+        "dev": "cross-env NODE_ENV=development nodemon index.js",
+        "test": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit",
+        "start:test": "cross-env NODE_ENV=test node index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cross-env": "^7.0.3",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "mongoose": "^7.0.0"
+    },
+    "devDependencies": {
+        "jest": "^29.4.3",
+        "nodemon": "^2.0.20"
+    }
+}
