@@ -1,11 +1,11 @@
 const config = require('./utils/config')
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 mongoose.connect(config.MONGODB_URI)
     .then(() => {
-        console.log("Connedted to MongoDB")
+        console.log("Connected to MongoDB")
     })
     .catch(error => {
         console.error("Error connecting to MongoDB:", error.message)
