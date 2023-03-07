@@ -8,13 +8,18 @@ a {
     margin: 0;
 }
 
-.main-nav {
+.header {
     display: flex;
     background-color: #ddd;
 
     a {
         margin: 0 10px;
         padding: 0 10px;
+    }
+
+    // should be replaced with shopping cart icon
+    button {
+        margin-left: auto;
     }
 }
 
@@ -29,25 +34,24 @@ a {
 
 .product-container {
     display: flex;
-    flex-direction: column;
-    width: 260px;
 
-    img {
-        width: 250px;
-    }
-
-    .size {
-        display: grid;
-        place-items: center;
-        background-color: #aaa;
-        border-radius: 50%;
-        height: 25px;
-        width: 25px;
-        margin: 0 4px;
+    .right-side {
+        // h1 is the title
+        display: flex;
+        flex-direction: column;
     }
 }
 
 .product-card {
     display: flex;
     flex-direction: column;
+}
+
+.shopping-cart {
+    background-color: aliceblue;
+    padding: 20px;
+    position: absolute;
+    z-index: 5;
+    top: 20px;
+    right: 0;
 }

@@ -11,28 +11,27 @@ const Category = () => {
     const { category } = useParams()
     const [products, setProducts] = useState([])
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: 'ddq7og6ff'
-        }
-    });
-
     useEffect(() => {
         productService
             .getCategory(category)
             .then(res => setProducts(res))
     }, [category])
 
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: 'ddq7og6ff'
+        }
+    });
+
     return (
         <div className="products-listing">
-            {products.map(p => (
-                <Link to={`/${p.id}`} key={p.id} className="product-card">
+            {products && products.map(p => (
+                <Link to={`/item/${p.id}`} key={p.id} className="product-card">
                     <AdvancedImage cldImg={cld.image(p.image).resize(fill().width(280).height(400))} />
                     <span>{p.title}</span>
                     <span>€{p.price}</span>
                 </Link>
             ))}
-            YOU ARE ON CATEGORY PAGE
         </div>
 
     )
