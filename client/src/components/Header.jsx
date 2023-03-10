@@ -15,7 +15,7 @@ const Header = () => {
             <Link to="/unisex">Unisex</Link>
             <button onClick={() => setOpen(!open)}>Cart</button>
             <span>{items.length}</span>
-            {open && <ShoppingCart />}
+            {open && <ShoppingCart setOpen={setOpen} />}
         </nav>
     )
 }

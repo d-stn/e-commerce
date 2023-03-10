@@ -4,6 +4,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import productService from "../services/products"
+import { displayPrice } from "../utils/helperFunctions"
 
 const Category = () => {
     // Route is defined as "/:category", so the part after the slash is known as "category"
@@ -29,7 +30,7 @@ const Category = () => {
                 <Link to={`/item/${p.id}`} key={p.id} className="product-card">
                     <AdvancedImage cldImg={cld.image(p.image).resize(fill().width(280).height(400))} />
                     <span>{p.title}</span>
-                    <span>€{p.price}</span>
+                    <span>{displayPrice(p.price)}</span>
                 </Link>
             ))}
         </div>

@@ -5,6 +5,9 @@ import Home from "./pages/Home"
 import Category from "./pages/Category"
 import Product from "./pages/Product"
 import Footer from "./components/Footer"
+import Checkout from "./pages/Checkout"
+import Success from "./pages/Success"
+import Proceed from "./pages/Proceed"
 
 const Layout = () => {
     return (
@@ -32,7 +35,19 @@ const router = createBrowserRouter([
             {
                 path: "/item/:id",
                 element: <Product />
-            }
+            },
+            {
+                path: "/order",
+                element: <Checkout />
+            },
+            {
+                path: "/success",
+                element: <Success />
+            },
+            {
+                path: "/proceed",
+                element: <Proceed />
+            },
         ]
     }
 ])

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { addToCart } from "../reducers/cartReducer"
 import productService from "../services/products"
+import { displayPrice } from "../utils/helperFunctions"
 
 const Product = () => {
     const { id } = useParams()
@@ -31,7 +32,7 @@ const Product = () => {
                     <AdvancedImage cldImg={cld.image(product.image)} />
                     <div className="right-side">
                         <h1>{product.title}</h1>
-                        <span>{product.price}</span>
+                        <span>{displayPrice(product.price)}</span>
                         <span>{product.desc}</span>
                         <button
                             onClick={() => dispatch(addToCart({ ...product, qty: 1 }))}
