@@ -12,7 +12,7 @@ productRouter.get("/:category", async (req, res) => {
     res.json(products)
 })
 
-productRouter.get("/:id", async (req, res) => {
+productRouter.get("/item/:id", async (req, res) => {
     const product = await Product.findById(req.params.id)
     if (product) {
         res.json(product)
