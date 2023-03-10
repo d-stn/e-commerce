@@ -13,6 +13,10 @@ const Checkout = () => {
     const [clientSecret, setClientSecret] = useState("")
 
     useEffect(() => {
+        if (items.length < 1) {
+            return
+        }
+
         const makeRequest = async () => {
             try {
                 const res = await orderService.makeOrder(items)
