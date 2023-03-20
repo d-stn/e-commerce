@@ -1,18 +1,26 @@
 import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { clearCart } from "../reducers/cartReducer"
 
 const Success = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
+            dispatch(clearCart())
             navigate("/")
         }, 5000);
+
+        return () => clearTimeout(timeout)
     }, [])
 
     return (
-        <div>
-            Payment successfull. You are being redirecter to the homepage. Please do not close the browser.
+        <div style={{ minHeight: "100vh" }}>
+            <h2>
+                Payment successfull. You are being redirected to the homepage. Please do not close the browser.
+            </h2>
         </div>
     )
 }

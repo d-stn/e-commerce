@@ -7,8 +7,12 @@ const getCategory = async (category) => {
 }
 
 const getProduct = async (id) => {
-    const res = await axios.get(`${baseUrl}/item/${id}`)
-    return res.data
+    try {
+        const res = await axios.get(`${baseUrl}/item/${id}`)
+        return res.data
+    } catch (error) {
+        console.error("An unexpected error occurred", error);
+    }
 }
 
 export default {

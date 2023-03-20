@@ -1,7 +1,4 @@
-// DISCLAIMER
-// A price should never be used by itself anywhere in this app
-// It must always be inside displayPrice() function
-
-export const displayPrice = (price) => {
-    return `€${Math.trunc(price / 100)}.${price % 100}`
+// if price is 123456789, this function returns "1,234,567.89" 
+export const displayPrice = (price) => {    // price in cents
+    return `€${(price / 100).toLocaleString()}`
 }

@@ -7,18 +7,17 @@ productRouter.get("/", async (req, res) => {
 })
 
 productRouter.get("/:category", async (req, res) => {
-    const products = await Product.find({ categories: req.params.category })
+    const products = await Product.find({ categories: req.params.category, stock: { $gt: 0 } })
 
     res.json(products)
 })
 
 productRouter.get("/item/:id", async (req, res) => {
-    const product = await Product.findById(req.params.id)
-    if (product) {
+    try {
+        const product = await Product.findById(req.params.id)
         res.json(product)
-    }
-    else {
-        res.status(404).end();
+    } catch (error) {
+        res.status(400).end()
     }
 })
 

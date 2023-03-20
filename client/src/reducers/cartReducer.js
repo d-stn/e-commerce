@@ -14,16 +14,19 @@ export const cartSlice = createSlice({
             if (!currentItem) {
                 state.items.push(action.payload)
             }
-            else {
+            else if (currentItem.qty + action.payload.qty <= currentItem.stock) {
                 currentItem.qty += action.payload.qty
             }
         },
         removeFromCart: (state, action) => {
             state.items = state.items.filter(item => item.id !== action.payload.id)
+        },
+        clearCart: (state, action) => {
+            state.items = [];
         }
     },
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

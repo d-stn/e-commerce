@@ -7,11 +7,10 @@ import Product from "./pages/Product"
 import Footer from "./components/Footer"
 import Checkout from "./pages/Checkout"
 import Success from "./pages/Success"
-import Proceed from "./pages/Proceed"
 
 const Layout = () => {
     return (
-        <div>
+        <div className="layout">
             <Header />
             <Outlet />
             <Footer />
@@ -23,6 +22,9 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
+        errorElement: (
+            <a href="/">The page you are looking for doesn't exist. Click anywhere in the text to get redirected to the homepage</a>
+        ),
         children: [
             {
                 path: "/",
@@ -37,17 +39,13 @@ const router = createBrowserRouter([
                 element: <Product />
             },
             {
-                path: "/order",
+                path: "/checkout",
                 element: <Checkout />
             },
             {
                 path: "/success",
                 element: <Success />
-            },
-            {
-                path: "/proceed",
-                element: <Proceed />
-            },
+            }
         ]
     }
 ])
