@@ -1,20 +1,12 @@
-import { AdvancedImage } from "@cloudinary/react"
-import { Cloudinary } from "@cloudinary/url-gen"
-import { fill } from "@cloudinary/url-gen/actions/resize"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { removeFromCart } from "../reducers/cartReducer"
 import { displayPrice } from "../utils/helperFunctions"
+import { TransformedImage } from "./Image"
 
 const ShoppingCart = () => {
     const items = useSelector(state => state.cart.items)
     const dispatch = useDispatch()
-
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: 'ddq7og6ff'
-        }
-    });
 
     return (
         <div className="shopping-cart">
@@ -22,14 +14,11 @@ const ShoppingCart = () => {
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     {items.map(item => (
                         <div className="container" key={item.id} >
-                            <AdvancedImage cldImg={
-                                cld.image(item.image)
-                                    .resize(
-                                        fill()
-                                            .width(160)
-                                            .height(120)
-                                    )
-                            } />
+                            <TransformedImage
+                                publicId={item.image}
+                                width={160}
+                                height={120}
+                            />
                             <div className="item-details">
                                 <div style={{ display: "flex" }}>
                                     <p>{item.title}</p>

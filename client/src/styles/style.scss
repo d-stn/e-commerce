@@ -22,6 +22,11 @@ a {
     flex-direction: column;
 }
 
+.title {
+    font-family: 'Bakbak One', cursive;
+    font-size: 2.4rem;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -48,11 +53,6 @@ header {
     // "remove from cart" button
     button {
         margin-left: auto;
-    }
-
-    .title {
-        font-family: 'Bakbak One', cursive;
-        font-size: 2.4rem;
     }
 
     .dropdown {
@@ -208,15 +208,11 @@ main {
 footer {
     margin-top: auto;
     padding: 2rem 5rem;
-    margin-top: 2rem;
     display: flex;
     background-color: #fbefe7;
     justify-content: space-around;
 
-    .title {
-        font-family: 'Bakbak One', cursive;
-        font-size: 2rem;
-    }
+
 
     section {
         display: flex;
@@ -587,6 +583,36 @@ hr {
         .payment-form {
             width: 80vw;
             min-width: initial;
+        }
+    }
+}
+
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    .success {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-direction: column;
+        width: 1000px;
+        height: 380px;
+        border-radius: 20px;
+        background-color: #e6d1c4;
+        font-weight: bold;
+
+        button {
+            background-color: #013d29;
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            padding: 1rem;
+            border-radius: 20px;
+            cursor: pointer;
         }
     }
 }

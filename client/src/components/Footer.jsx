@@ -13,10 +13,18 @@ const Footer = () => {
             <section>
                 <span className="title">TechRider</span>
                 <div style={{ display: "flex", justifyContent: "space-around" }}>
-                    <FacebookIcon />
-                    <TwitterIcon />
-                    <InstagramIcon />
-                    <YoutubeIcon />
+                    <a href="https://github.com/d-stn">
+                        <FacebookIcon />
+                    </a>
+                    <a href="https://github.com/d-stn">
+                        <TwitterIcon />
+                    </a>
+                    <a href="https://github.com/d-stn">
+                        <InstagramIcon />
+                    </a>
+                    <a href="https://github.com/d-stn">
+                        <YoutubeIcon />
+                    </a>
                 </div>
             </section>
             <section>

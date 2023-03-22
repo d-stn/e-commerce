@@ -1,8 +1,7 @@
-import { AdvancedImage } from "@cloudinary/react"
-import { Cloudinary } from "@cloudinary/url-gen"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
+import Image from "../components/Image"
 import { addToCart } from "../reducers/cartReducer"
 import productService from "../services/products"
 import { displayPrice } from "../utils/helperFunctions"
@@ -19,18 +18,12 @@ const Product = () => {
             .then(res => setProduct(res))
     }, [id])
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: 'ddq7og6ff'
-        }
-    });
-
     return (
         <div>
             {product && (
                 <div className="product-container">
                     <div className="upper-part">
-                        <AdvancedImage cldImg={cld.image(product.image)} />
+                        <Image publicId={product.image} />
                         <div className="right-side">
                             <h1>{product.title}</h1>
                             <div className="desc">{product.desc}</div>

@@ -1,8 +1,6 @@
-import { AdvancedImage } from "@cloudinary/react"
-import { Cloudinary } from "@cloudinary/url-gen"
-import { fill } from "@cloudinary/url-gen/actions/resize"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
+import { TransformedImage } from "../components/Image"
 import productService from "../services/products"
 import { displayPrice } from "../utils/helperFunctions"
 
@@ -29,12 +27,6 @@ const Category = () => {
             })
     }, [category, sortBy])
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: 'ddq7og6ff'
-        }
-    });
-
     return (
         <div>
             {products.length > 0 ?
@@ -58,15 +50,11 @@ const Category = () => {
                     <div className="products-listing">
                         {products && products.map(p => (
                             <Link to={`/item/${p.id}`} key={p.id} className="product-card">
-                                <AdvancedImage cldImg={
-                                    cld.image(p.image)
-                                        .resize(
-                                            fill()
-                                                .width(300)
-                                                .height(225)
-                                        )
-                                    // .backgroundColor("lightgrey")
-                                } />
+                                <TransformedImage
+                                    publicId={p.image}
+                                    width={300}
+                                    height={225}
+                                />
                                 <span>{p.title}</span>
                                 <span>{displayPrice(p.price)}</span>
                             </Link>

@@ -6,9 +6,7 @@ import { Elements } from "@stripe/react-stripe-js"
 import orderService from "../services/order"
 import { displayPrice } from "../utils/helperFunctions"
 import CheckoutForm from "../components/CheckoutForm"
-import { Cloudinary } from "@cloudinary/url-gen"
-import { AdvancedImage } from "@cloudinary/react"
-import { fill } from "@cloudinary/url-gen/actions/resize"
+import { TransformedImage } from "../components/Image"
 
 const stripePromise = loadStripe("pk_test_51MimZFJrvCD8ptIuFKxFW1lwgtrRG17zgGl0auVPkoFYE1lou7uCJytPgHaeGl5kF6D10uC39jroHWUhBQVOIeVV00MQewnjtY")
 
@@ -33,15 +31,9 @@ const Checkout = () => {
         makeRequest()
     }, [])
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: 'ddq7og6ff'
-        }
-    });
-
     // stripe "minimal" preset with some minor tweaks
     const appearance = {
-        theme: 'flat',
+        theme: 'minimal',
         variables: {
             fontFamily: ' "Montserrat", sans-serif',
             fontLineHeight: '1.5',
@@ -52,10 +44,10 @@ const Checkout = () => {
             '.Block': {
                 backgroundColor: 'var(--colorBackground)',
                 boxShadow: 'none',
-                padding: '12px'
+                padding: '12px',
             },
             '.Input': {
-                fontSize: "1.05rem"
+                fontSize: "1.05rem",
             },
             '.Input:disabled, .Input--invalid:disabled': {
                 color: 'lightgray'
@@ -75,7 +67,7 @@ const Checkout = () => {
             },
             '.Label': {
                 fontWeight: '500'
-            }
+            },
         }
     };
 
@@ -93,14 +85,11 @@ const Checkout = () => {
                             <div className="items-list">
                                 {items.map(item => (
                                     <div key={item.id} style={{ display: "flex" }}>
-                                        <AdvancedImage cldImg={
-                                            cld.image(item.image)
-                                                .resize(
-                                                    fill()
-                                                        .width(200)
-                                                        .height(150)
-                                                )
-                                        } />
+                                        <TransformedImage
+                                            publicId={item.image}
+                                            width={200}
+                                            height={150}
+                                        />
                                         <div>
                                             <Link to={`/item/${item.id}`}>
                                                 {item.title}
