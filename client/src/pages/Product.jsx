@@ -57,7 +57,7 @@ const Product = () => {
                             </div>
                             <div className="buy-buttons">
                                 {/*
-                                    // TODO: ADD FUNCTIONALITY TO BUTTON
+                                    // TODO: Add functionality to button
                                     <button>Buy Now</button> 
                                 */}
                                 <button

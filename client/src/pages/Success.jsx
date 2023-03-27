@@ -48,7 +48,10 @@ const SuccessElement = () => {
             .retrievePaymentIntent(clientSecret)
             .then(({ paymentIntent }) => {
                 const orderObjet = {
+                    name: paymentIntent.shipping.name,
+                    phone: paymentIntent.shipping.phone,
                     address: paymentIntent.shipping.address,
+                    totalPrice: paymentIntent.amount,
                     items: itemsToSend
                 }
                 orderService.createOrder(orderObjet)

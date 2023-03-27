@@ -1,48 +1,42 @@
 const Product = require('../models/product');
 
-const lorem50 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus dolor sapien, id rutrum ante elementum in. Ut aliquet, eros id lobortis bibendum, nulla augue sodales enim, et tristique lorem tortor ac enim. Proin magna felis, lobortis a ante at, hendrerit hendrerit sapien. Nulla tincidunt ipsum non felis dapibus, eu."
-
 const initialProducts = [
     {
-        title: "Grey T-Shirt",
-        desc: lorem50,
-        image: "grey_tshirt_male",
-        categories: ["men", "t-shirt", "plain"],
-        sizes: ["M", "L", "XL"],
-        color: ["grey"],
+        title: "Mouse",
+        desc: "Lorem ipsum",
+        image: "mouse",
+        categories: ["mouse"],
+        tags: [""],
+        specs: {
+            key: "value"
+        },
         stock: 12,
-        price: 19.99
+        price: 1999
     },
     {
-        title: "White Hoodie",
-        desc: lorem50,
-        image: "white_hoodie_male_front",
-        categories: ["men", "hoodie", "plain"],
-        sizes: ["M", "L"],
-        color: ["white"],
+        title: "Headphones",
+        desc: "Lorem ipsum",
+        image: "headphones",
+        categories: ["headphones"],
+        tags: [""],
+        specs: {
+            key: "value"
+        },
         stock: 12,
-        price: 39.99
+        price: 1999
     },
     {
-        title: "Red T-Shirt",
-        desc: lorem50,
-        image: "red_tshirt_male",
-        categories: ["unisex", "tshirt", "plain"],
-        sizes: ["S", "M", "L"],
-        color: ["red"],
+        title: "Monitor",
+        desc: "Lorem ipsum",
+        image: "monitor",
+        categories: ["monitor"],
+        tags: [""],
+        specs: {
+            key: "value"
+        },
         stock: 12,
-        price: 19.99
+        price: 1999
     },
-    {
-        title: "Black Hoodie",
-        desc: lorem50,
-        image: "black_hoodie_male",
-        categories: ["men", "hoodie", "plain"],
-        sizes: ["S", "M", "L", "XL"],
-        color: ["black"],
-        stock: 12,
-        price: 59.99
-    }
 ]
 
 // this functing should return what is currently in the database
@@ -55,7 +49,7 @@ const getProductsInDb = async () => {
 }
 
 const getNonExistingId = async () => {
-    const product = new Product({ title: "willremovethissoon", image: "foo", color: ["foo"], stock: 1, price: 1.99 })
+    const product = new Product({ title: "willremovethissoon", image: "foo", categories: ["foo"], stock: 1, price: 199 })
     await product.save();
     await product.remove();
 

@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
-import "./styles/style.css"
 import Header from "./components/Header"
 import Home from "./pages/Home"
 import Category from "./pages/Category"
@@ -7,6 +6,7 @@ import Product from "./pages/Product"
 import Footer from "./components/Footer"
 import Checkout from "./pages/Checkout"
 import Success from "./pages/Success"
+import "./styles/style.css"
 
 const Layout = () => {
     return (

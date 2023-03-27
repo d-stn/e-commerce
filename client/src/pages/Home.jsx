@@ -7,7 +7,7 @@ const Home = () => {
             <div className="sale-element">
                 <div>
                     <span>Grab The Best-Selling Headphones Of The Month</span>
-                    <Link to="/item/6412efcaf8d4f4ebf16c677a" >
+                    <Link to="/item/641c92948a711b99fb51cc8d" >
                         <button>Buy Now</button>
                     </Link>
                 </div>

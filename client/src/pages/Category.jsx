@@ -5,8 +5,6 @@ import productService from "../services/products"
 import { displayPrice } from "../utils/helperFunctions"
 
 const Category = () => {
-    // Route is defined as "/:category", so the part after the slash is known as "category"
-    // We get it's value by destructuring and using the useParams hook
     const { category } = useParams()
     const [products, setProducts] = useState([])
     const [sortBy, setSortBy] = useState("Choose here")
@@ -33,7 +31,7 @@ const Category = () => {
                 <div>
                     <hr />
                     <div style={{ display: "flex", padding: "1rem 0" }}>
-                        <h1>{category.toLocaleUpperCase()}</h1>
+                        <h1>Browsing category "{category}"</h1>
                         <div className="sort-menu-container">
                             {/* we have another <div> because that way <label> and <select> are centered vertically */}
                             <div className="sort-menu">
@@ -55,8 +53,10 @@ const Category = () => {
                                     width={300}
                                     height={225}
                                 />
-                                <span>{p.title}</span>
-                                <span>{displayPrice(p.price)}</span>
+                                <section>
+                                    <span>{p.title}</span>
+                                    <span>{displayPrice(p.price)}</span>
+                                </section>
                             </Link>
                         ))}
                     </div>

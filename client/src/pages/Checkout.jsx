@@ -8,6 +8,7 @@ import { displayPrice } from "../utils/helperFunctions"
 import CheckoutForm from "../components/CheckoutForm"
 import { TransformedImage } from "../components/Image"
 
+// This key does not have to be hidden
 const stripePromise = loadStripe("pk_test_51MimZFJrvCD8ptIuFKxFW1lwgtrRG17zgGl0auVPkoFYE1lou7uCJytPgHaeGl5kF6D10uC39jroHWUhBQVOIeVV00MQewnjtY")
 
 const Checkout = () => {
@@ -33,7 +34,6 @@ const Checkout = () => {
 
     // stripe "minimal" preset with some minor tweaks
     const appearance = {
-        theme: 'minimal',
         variables: {
             fontFamily: ' "Montserrat", sans-serif',
             fontLineHeight: '1.5',
@@ -104,7 +104,7 @@ const Checkout = () => {
                             </div>
                         </div>
                         <div>
-                            <Elements options={options} stripe={stripePromise}>
+                            <Elements key={clientSecret} options={options} stripe={stripePromise}>
                                 <CheckoutForm />
                             </Elements>
                         </div>

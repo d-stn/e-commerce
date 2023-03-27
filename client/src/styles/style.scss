@@ -279,6 +279,13 @@ footer {
 .product-card {
     display: flex;
     flex-direction: column;
+
+    section {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+        padding-bottom: 1rem;
+    }
 }
 
 .product-card:hover {

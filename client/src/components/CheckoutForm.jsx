@@ -1,18 +1,11 @@
 import { useState } from "react";
-import {
-    PaymentElement,
-    LinkAuthenticationElement,
-    useStripe,
-    useElements,
-    AddressElement
-} from "@stripe/react-stripe-js";
+import { PaymentElement, useStripe, useElements, AddressElement } from "@stripe/react-stripe-js";
 
 const CheckoutForm = () => {
     const stripe = useStripe();
     // Used to safely pass the payment information collected by the <PaymentElement> to the Stripe API
     const elements = useElements();
 
-    const [email, setEmail] = useState('');
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -52,22 +45,22 @@ const CheckoutForm = () => {
     return (
         <form className="payment-form" id="payment-form" onSubmit={handleSubmit} >
             <div style={{ marginBottom: "2rem" }}>
-                <h3>Contact info</h3>
-                <LinkAuthenticationElement
-                    id="link-authentication-element"
-                    onChange={(e) => {
-                        // I don't know why it isn't "e.target.value"
-                        setEmail(e.value)
-                    }}
-                />
+                <h3>Shipping</h3>
+                <AddressElement options={{
+                    mode: 'shipping',
+                    allowedCountries: ['FR', 'DE', 'NL', 'CH', 'BE'],
+                    fields: {
+                        phone: 'always',
+                    },
+                    validation: {
+                        phone: {
+                            required: 'always',
+                        },
+                    },
+                }} />
             </div>
 
             <div style={{ marginBottom: "2rem" }}>
-                <h3>Shipping</h3>
-                <AddressElement options={{ mode: 'shipping', allowedCountries: ['FR', 'DE', 'NL', 'CH', 'BE'] }} />
-            </div>
-
-            <div style={{ marginBottom: "2rem" }} className="what">
                 <h3>Payment</h3>
                 <PaymentElement id="payment-element" options={paymentElementOptions} />
             </div>

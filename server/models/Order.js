@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-    address: {
-        type: String,
-        required: true
-    },
-    items: [{
-        id: mongoose.Schema.Types.ObjectId,
-        qty: Number,
-        priceAtOrder: Number,   // price at the time of order can be different than usual price (e.g. on sale)
-    }],
+    name: { type: String, reqired: true },
+    phone: { type: String, reqired: true },
+    address: { type: Object, required: true },
+    items: [Object],
+    totalPrice: Number,
     status: {
         type: String,
         enum: ["pending", "completed", "refunded"],

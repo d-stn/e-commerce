@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../styles/icons";
 
+const githubURL = "https://github.com/d-stn"
+
 const Footer = () => {
     const [email, setEmail] = useState("")
     const handleOnClick = () => {
@@ -13,30 +15,30 @@ const Footer = () => {
             <section>
                 <span className="title">TechRider</span>
                 <div style={{ display: "flex", justifyContent: "space-around" }}>
-                    <a href="https://github.com/d-stn">
+                    <a href={githubURL}>
                         <FacebookIcon />
                     </a>
-                    <a href="https://github.com/d-stn">
+                    <a href={githubURL}>
                         <TwitterIcon />
                     </a>
-                    <a href="https://github.com/d-stn">
+                    <a href={githubURL}>
                         <InstagramIcon />
                     </a>
-                    <a href="https://github.com/d-stn">
+                    <a href={githubURL}>
                         <YoutubeIcon />
                     </a>
                 </div>
             </section>
             <section>
-                <a href="https://github.com/d-stn">About</a>
-                <a href="https://github.com/d-stn">Careers</a>
-                <a href="https://github.com/d-stn">FAQ</a>
-                <a href="https://github.com/d-stn">Contact Us</a>
+                <a href={githubURL}>About</a>
+                <a href={githubURL}>Careers</a>
+                <a href={githubURL}>FAQ</a>
+                <a href={githubURL}>Contact Us</a>
             </section>
             <section>
-                <a href="https://github.com/d-stn">Terms and Conditions</a>
-                <a href="https://github.com/d-stn">Privacy Policy</a>
-                <a href="https://github.com/d-stn">Cookie Policy</a>
+                <a href={githubURL}>Terms and Conditions</a>
+                <a href={githubURL}>Privacy Policy</a>
+                <a href={githubURL}>Cookie Policy</a>
             </section>
             <section>
                 <span>Stay up to date on sales and new products</span>

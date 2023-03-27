@@ -40,4 +40,32 @@ orderRouter.post('/create-payment-intent', async (req, res) => {
     }
 });
 
+orderRouter.post("/create-order", async (req, res) => {
+    if (!req.body.items || !req.body.address) {
+        res.send(400).end()
+    }
+
+    try {
+        const { address, items, name, phone, totalPrice } = req.body
+
+        const savedOrder = await new Order({ address, items, name, phone, totalPrice }).save()
+
+        // extract id of each product in "ids" array
+        const ids = savedOrder.items.map(item => item.id)
+
+        // Loop through "ids" and decrease the quantity of each product in DB by the amount that was ordered
+        Product.bulkWrite(ids.map(current => {
+            return {
+                updateOne: { "filter": { _id: current }, "update": { $inc: { "stock": -savedOrder.items.find(e => e.id === current).qty } } }
+            }
+        }))
+
+        res.status(201).end()
+
+    } catch (err) {
+        console.log(err);
+        res.status(400).send({ error: err.message })
+    }
+})
+
 module.exports = orderRouter;
