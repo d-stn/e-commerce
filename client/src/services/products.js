@@ -1,5 +1,6 @@
 import axios from "axios";
-const baseUrl = "/api/products"
+const baseUrl = "https://e-commerce-server-jivi.onrender.com/api/products"
+
 
 const getCategory = async (category) => {
     try {
