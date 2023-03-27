@@ -4,12 +4,4 @@ import eslint from 'vite-plugin-eslint'
 
 export default defineConfig({
     plugins: [react(), eslint()],
-    server: {
-        proxy: {
-            "/api": {
-                target: "https://e-commerce-server-jivi.onrender.com",
-                changeOrigin: true,
-            }
-        },
-    }
 })
