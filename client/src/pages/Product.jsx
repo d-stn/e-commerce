@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Image from "../components/Image"
-import { addToCart } from "../reducers/cartReducer"
+import { addToCart, buyNow } from "../reducers/cartReducer"
 import productService from "../services/products"
 import { displayPrice } from "../utils/helperFunctions"
 
 const Product = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [product, setProduct] = useState({})
     const [qty, setQty] = useState(1)
     const dispatch = useDispatch()
@@ -56,10 +57,12 @@ const Product = () => {
                                 }
                             </div>
                             <div className="buy-buttons">
-                                {/*
-                                    // TODO: Add functionality to button
-                                    <button>Buy Now</button> 
-                                */}
+                                <button
+                                    onClick={() => {
+                                        dispatch(buyNow({ ...product, qty: qty }))
+                                        navigate("/checkout/buy_now")
+                                    }}
+                                >Buy Now</button>
                                 <button
                                     onClick={() => dispatch(addToCart({ ...product, qty: qty }))}
                                 >Add to Cart</button>

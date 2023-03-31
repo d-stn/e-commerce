@@ -24,26 +24,26 @@ const Home = () => {
                 Browse the most popular categories
             </h1>
 
-            <Link to="monitor" style={{ display: "flex", width: "100%", marginBottom: "3rem" }}>
+            <Link to="/category/monitor" style={{ display: "flex", width: "100%", marginBottom: "3rem" }}>
                 <Image
                     publicId={"monitors_category"}
                     style={{ width: "100%", borderRadius: "10px" }}
                 />
             </Link>
             <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-                <Link to="mouse" style={{ display: "flex", width: "30%", marginBottom: "3rem" }}>
+                <Link to="/category/mouse" style={{ display: "flex", width: "30%", marginBottom: "3rem" }}>
                     <Image
                         publicId={"mice_category"}
                         style={{ borderRadius: "10px", width: "100%" }}
                     />
                 </Link>
-                <Link to="headphones" style={{ display: "flex", width: "30%", marginBottom: "3rem" }}>
+                <Link to="/category/headphones" style={{ display: "flex", width: "30%", marginBottom: "3rem" }}>
                     <Image
                         publicId={"headphones_category"}
                         style={{ borderRadius: "10px", width: "100%" }}
                     />
                 </Link>
-                <Link to="gpu" style={{ display: "flex", width: "30%", marginBottom: "3rem" }}>
+                <Link to="/category/gpu" style={{ display: "flex", width: "30%", marginBottom: "3rem" }}>
                     <Image
                         publicId={"gpus_category"}
                         style={{ borderRadius: "10px", width: "100%" }}

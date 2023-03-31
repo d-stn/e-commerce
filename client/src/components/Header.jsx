@@ -15,9 +15,9 @@ const Header = () => {
                 />
                 <span className="title">TechRider</span>
             </Link>
-            <Link to="/headphones">Headphones</Link>
-            <Link to="/monitor">Monitors</Link>
-            <Link to="/gpu">Graphics Cards</Link>
+            <Link to="/category/headphones">Headphones</Link>
+            <Link to="/category/monitor">Monitors</Link>
+            <Link to="/category/gpu">Graphics Cards</Link>
 
             {/* TODO: Make this a dropodown menu that shows many categories on hover */}
             <Link>Other</Link>

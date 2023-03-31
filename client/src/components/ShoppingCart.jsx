@@ -34,7 +34,7 @@ const ShoppingCart = () => {
                         <span>
                             Total: {displayPrice(items.reduce((a, b) => a + (b.qty * b.price), 0))}
                         </span>
-                        <Link to="/checkout" >
+                        <Link to="/checkout/cart" >
                             <button>Checkout</button>
                         </Link>
                     </div>

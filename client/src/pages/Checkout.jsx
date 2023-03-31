@@ -1,23 +1,42 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { Link, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import orderService from "../services/order"
 import { displayPrice } from "../utils/helperFunctions"
 import CheckoutForm from "../components/CheckoutForm"
 import { TransformedImage } from "../components/Image"
+import { setCartPurchase } from "../reducers/cartReducer"
 
 // This key does not have to be hidden
 const stripePromise = loadStripe("pk_test_51MimZFJrvCD8ptIuFKxFW1lwgtrRG17zgGl0auVPkoFYE1lou7uCJytPgHaeGl5kF6D10uC39jroHWUhBQVOIeVV00MQewnjtY")
 
 const Checkout = () => {
-    const items = useSelector(state => state.cart.items)
+    const dispatch = useDispatch()
+    const { type } = useParams()
+
+    const items = useSelector(state => {
+        if (type === "buy_now") {
+            return [state.cart.buyNowItem]
+        }
+        return state.cart.items
+    })
     const [clientSecret, setClientSecret] = useState("")
 
     useEffect(() => {
         if (items.length < 1) {
             return
+        }
+
+        if (type === "cart") {
+            dispatch(setCartPurchase(true))
+        }
+        else if (type === "buy_now") {
+            dispatch(setCartPurchase(false))
+        }
+        else {
+            throw new Error
         }
 
         const makeRequest = async () => {
@@ -30,7 +49,7 @@ const Checkout = () => {
             }
         }
         makeRequest()
-    }, [])
+    }, [type])
 
     // stripe "minimal" preset with some minor tweaks
     const appearance = {

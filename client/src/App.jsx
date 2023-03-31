@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Layout />,
         errorElement: (
-            <a href="/">The page you are looking for doesn't exist. Click anywhere in the text to get redirected to the homepage</a>
+            <a href="/">The page you are looking for doesn't exist. Click anywhere in the text to get redirected to the homepage.</a>
         ),
         children: [
             {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "/:category",
+                path: "/category/:category",
                 element: <Category />
             },
             {
@@ -39,8 +39,10 @@ const router = createBrowserRouter([
                 element: <Product />
             },
             {
-                path: "/checkout",
-                element: <Checkout />
+                path: "/checkout/:type",
+                // adding the pathname as a key makes the component rerender when the pathname changes
+                // (fixes bug where if customer is on "buy now" page and clicks checkout nothing happens)
+                element: <Checkout key={window.location.pathname} />
             },
             {
                 path: "/success",

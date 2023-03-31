@@ -4,7 +4,6 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { clearCart } from "../reducers/cartReducer"
-
 import orderService from "../services/order"
 
 const stripePromise = loadStripe("pk_test_51MimZFJrvCD8ptIuFKxFW1lwgtrRG17zgGl0auVPkoFYE1lou7uCJytPgHaeGl5kF6D10uC39jroHWUhBQVOIeVV00MQewnjtY")
@@ -21,7 +20,7 @@ const SuccessElement = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const stripe = useStripe()
-    const items = useSelector(state => state.cart.items)
+    const cart = useSelector(state => state.cart)
 
     useEffect(() => {
         if (!stripe) {
@@ -36,13 +35,24 @@ const SuccessElement = () => {
             return
         }
 
-        const itemsToSend = items.map(e => {
-            return {
-                id: e.id,
-                qty: e.qty,
-                priceAtOrer: e.price
-            }
-        })
+        if (typeof cart.cartPurchase !== "boolean") {
+            return;
+        }
+
+        const itemsToSend = cart.cartPurchase ?
+            cart.items.map(e => {
+                return {
+                    id: e.id,
+                    qty: e.qty,
+                    priceAtOrer: e.price
+                }
+            })
+            :
+            [{
+                id: cart.buyNowItem.id,
+                qty: cart.buyNowItem.qty,
+                priceAtOrer: cart.buyNowItem.price
+            }]
 
         stripe
             .retrievePaymentIntent(clientSecret)
@@ -56,7 +66,7 @@ const SuccessElement = () => {
                 }
                 orderService.createOrder(orderObjet)
             })
-            .then(() => dispatch(clearCart()))
+            .then(() => dispatch(clearCart({ cartPurchase: cart.cartPurchase })))
     }, [stripe])
 
     return (
