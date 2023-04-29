@@ -133,6 +133,44 @@ header .dropdown:hover .shopping-cart {
 header span {
   font-size: 1.6rem;
 }
+header .search-container {
+  position: absolute;
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: 0px 2px 4px 0px #b4b4b4;
+}
+header .search-container a {
+  display: flex;
+  justify-content: space-between;
+}
+header .search-container a .categories {
+  padding-left: 3rem;
+  color: rgb(55, 53, 53);
+  font-size: 0.8rem;
+}
+header .search-container a:hover {
+  background-color: #013d29;
+  color: white;
+  transition: 100ms;
+}
+header form input {
+  background-color: #fbefe7;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid grey;
+}
+header form button {
+  font-size: 1rem;
+  width: 80px;
+  padding: 0.2rem 0;
+  margin-left: 2rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #013d29;
+  color: white;
+  cursor: pointer;
+}
 
 main {
   display: flex;

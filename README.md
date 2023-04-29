@@ -61,6 +61,8 @@ Change the constant variable `baseUrl` in `client/src/services/order.js` and `cl
 npm start
 ```
 
+Note: If the products are not loading, then the server (which is hosted on railway) is not live. This is because I am using railway's free tier and I have ran out of credits. The server will be up when the next month starts.
+
 ## Previews
 ![Preiew1](https://user-images.githubusercontent.com/94789169/228053855-d8c2a96b-ad5f-4b0e-87ff-b8fae787b0f6.gif)
 ![Preiew2](https://user-images.githubusercontent.com/94789169/228053946-b5b96530-807f-47dc-afc1-80f3ceed529b.gif)
